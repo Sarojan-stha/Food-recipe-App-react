@@ -7,8 +7,27 @@ export const GlobalState = ({ children }) => {
   const [searchParam, setSearchParam] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
+  const [favoritesList, setFavoritesList] = useState([]);
 
   console.log(recipes);
+
+  function handleAddToFavorite(getCurrentItem) {
+    console.log(getCurrentItem);
+    let cpyFavoritesList = [...favoritesList];
+    const index = cpyFavoritesList.findIndex(
+      (item) => item.id === getCurrentItem.id
+    );
+
+    if (index === -1) {
+      cpyFavoritesList.push(getCurrentItem);
+    } else {
+      cpyFavoritesList.splice(index);
+    }
+
+    setFavoritesList(cpyFavoritesList);
+  }
+
+  console.log(favoritesList, "favoritesList");
 
   async function handleSubmit() {
     try {
@@ -24,6 +43,7 @@ export const GlobalState = ({ children }) => {
       console.log(error);
     }
   }
+  function handleDetails(id) {}
 
   return (
     <GlobalContext.Provider
