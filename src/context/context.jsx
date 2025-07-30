@@ -8,6 +8,7 @@ export const GlobalState = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
+  const [recipeDetails, setRecipeDetails] = useState(null);
 
   console.log(recipes);
 
@@ -31,23 +32,42 @@ export const GlobalState = ({ children }) => {
 
   async function handleSubmit() {
     try {
+      setIsLoading(true);
       const response = await fetch(
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
       );
-      const datas = await response.json();
-      const { data } = datas;
-      setRecipes(data.recipes);
+      const result = await response.json();
 
-      console.log(data);
+      const recipesData = result?.data?.recipes;
+
+      if (recipesData?.length > 0) {
+        setRecipes(recipesData);
+      } else {
+        setRecipes([]);
+      }
+
+      setSearchParam("");
+      setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching recipes:", error);
+      setIsLoading(false);
     }
   }
+
   function handleDetails(id) {}
 
   return (
     <GlobalContext.Provider
-      value={{ searchParam, setSearchParam, handleSubmit, recipes }}
+      value={{
+        searchParam,
+        setSearchParam,
+        handleSubmit,
+        recipes,
+        recipeDetails,
+        setRecipeDetails,
+        handleAddToFavorite,
+        favoritesList,
+      }}
     >
       {children}
     </GlobalContext.Provider>
