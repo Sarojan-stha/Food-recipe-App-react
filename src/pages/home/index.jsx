@@ -1,7 +1,7 @@
 import Navbar from "../../commponents/navbar/Navbar";
 import { GlobalContext, GlobalState } from "../../context/context";
 import { useContext } from "react";
-import "./../../App.css";
+import "./home.css";
 import RecipeItem from "../../commponents/Recipe-item/Recipe-item";
 
 export default function Home() {
