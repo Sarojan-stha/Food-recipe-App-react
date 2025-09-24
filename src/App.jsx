@@ -1,4 +1,3 @@
-import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Favourites from "./pages/Favourites";
 import Home from "./pages/home";
