@@ -34,7 +34,7 @@ export const GlobalState = ({ children }) => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchParam}`
       );
       const result = await response.json();
 
