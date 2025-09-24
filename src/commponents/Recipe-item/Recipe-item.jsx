@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 const RecipeItem = ({ item }) => {
   return (
     <div className="recipes">
-      {console.log(item.title)}
-      <img src={item.image_url} alt={item.title} />
-      <h3>{item.title}</h3>
-      <p>{item.publisher}</p>
-      <Link to={`/recipe-item/${item?.id}`}>Details</Link>
+      <img src={item.strMealThumb} alt={item.strMeal} />
+      <h3>{item.strMeal}</h3>
+      <p>{item.strTags}</p>
+      <Link to={`/recipe-item/${item?.idMeal}`}>Details</Link>
     </div>
   );
 };

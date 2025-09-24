@@ -38,7 +38,7 @@ export const GlobalState = ({ children }) => {
       );
       const result = await response.json();
 
-      const recipesData = result?.data?.recipes;
+      const recipesData = result?.meals;
 
       if (recipesData?.length > 0) {
         setRecipes(recipesData);
