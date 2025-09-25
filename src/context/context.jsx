@@ -68,6 +68,7 @@ export const GlobalState = ({ children }) => {
         setRecipeDetails,
         handleAddToFavorite,
         favoritesList,
+        isLoading,
       }}
     >
       {children}

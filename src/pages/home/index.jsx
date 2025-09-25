@@ -5,14 +5,19 @@ import "./home.css";
 import RecipeItem from "../../commponents/Recipe-item/Recipe-item";
 
 export default function Home() {
-  const { recipes } = useContext(GlobalContext);
+  const { recipes, isLoading } = useContext(GlobalContext);
 
   return (
     <div className="home">
-      {recipes.meals &&
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : recipes.meals ? (
         recipes.meals.map((recipe) => (
           <RecipeItem key={recipe.id || recipe.name} item={recipe} />
-        ))}
+        ))
+      ) : (
+        <div> "Not found"</div>
+      )}
     </div>
   );
 }
