@@ -46,15 +46,15 @@ export default function Details() {
         <div>
           <button
             className="details-button"
-            onClick={() => handleAddToFavorite(recipeDetails?.recipe)}
+            onClick={() => handleAddToFavorite(recipeDetails)}
           >
             {favoritesList &&
             favoritesList.length > 0 &&
             favoritesList.findIndex(
-              (item) => item.id === recipeDetails?.recipe?.id
+              (item) => item.idMeal === recipeDetails.idMeal
             ) !== -1
               ? "Remove from favorites"
-              : "Add to favorites"}
+              : "Addd to favorites"}
           </button>
         </div>
         <div className="details-ingredients">

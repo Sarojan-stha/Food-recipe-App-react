@@ -14,13 +14,15 @@ export const GlobalState = ({ children }) => {
     console.log(getCurrentItem);
     let cpyFavoritesList = [...favoritesList];
     const index = cpyFavoritesList.findIndex(
-      (item) => item.id === getCurrentItem.id
+      (item) => item.idMeal === getCurrentItem.idMeal
     );
+
+    console.log(index);
 
     if (index === -1) {
       cpyFavoritesList.push(getCurrentItem);
     } else {
-      cpyFavoritesList.splice(index);
+      cpyFavoritesList.splice(index, 1);
     }
 
     setFavoritesList(cpyFavoritesList);
