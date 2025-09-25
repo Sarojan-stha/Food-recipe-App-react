@@ -9,8 +9,8 @@ export default function Home() {
 
   return (
     <div className="home">
-      {recipes &&
-        recipes.map((recipe) => (
+      {recipes.meals &&
+        recipes.meals.map((recipe) => (
           <RecipeItem key={recipe.id || recipe.name} item={recipe} />
         ))}
     </div>
