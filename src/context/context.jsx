@@ -6,11 +6,9 @@ export const GlobalContext = createContext(null);
 export const GlobalState = ({ children }) => {
   const [searchParam, setSearchParam] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState({});
   const [favoritesList, setFavoritesList] = useState([]);
   const [recipeDetails, setRecipeDetails] = useState(null);
-
-  console.log(recipes);
 
   function handleAddToFavorite(getCurrentItem) {
     console.log(getCurrentItem);
@@ -38,13 +36,14 @@ export const GlobalState = ({ children }) => {
       );
       const result = await response.json();
 
-      const recipesData = result?.meals;
+      const recipesData = result;
 
-      if (recipesData?.length > 0) {
+      if (recipesData?.meals.length > 0) {
         setRecipes(recipesData);
       } else {
-        setRecipes([]);
+        setRecipes({});
       }
+      console.log(recipes);
 
       setSearchParam("");
       setIsLoading(false);
