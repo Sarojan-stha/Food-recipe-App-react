@@ -9,38 +9,40 @@ export default function Details() {
     setRecipeDetails,
     handleAddToFavorite,
     favoritesList,
+    recipes,
   } = useContext(GlobalContext);
 
   const { id } = useParams();
+  let details = {};
+  const ingredients = [];
 
-  useEffect(() => {
-    async function fetchDetails() {
-      const response = await fetch(
-        `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-      );
-      const data = await response.json();
-      console.log(data);
-      if (data?.data) {
-        setRecipeDetails(data?.data);
-      }
+  console.log(`id: ${id}`);
+  console.log(recipes);
+  details = recipes.meals.find((item) => item.idMeal === id);
+  console.log(`details`, details);
+  setRecipeDetails(details);
+
+  for (let i = 1; i <= 20; i++) {
+    const ingredient = recipeDetails[`strIngredient${i}`]; //works same as dot notation
+    const measure = recipeDetails[`strMeasure${i}`];
+
+    if (ingredient && ingredient.trim() !== "") {
+      ingredients.push(`${measure} ${ingredient}`);
     }
-    fetchDetails();
-  }, [id]);
+  }
 
   return (
     <div className="details-container">
       <div>
         <img
-          src={recipeDetails?.recipe.image_url}
+          src={recipeDetails?.strMealThumb}
           alt="img"
           className="details-img"
         />
       </div>
       <div className="details-content">
-        <span className="details-publisher">
-          {recipeDetails?.recipe?.publisher}
-        </span>
-        <h3 className="details-title">{recipeDetails?.recipe?.title}</h3>
+        <span className="details-publisher">{recipeDetails?.strArea}</span>
+        <h3 className="details-title">{recipeDetails?.strMeal}</h3>
         <div>
           <button
             className="details-button"
@@ -58,15 +60,11 @@ export default function Details() {
         <div className="details-ingredients">
           <span>Ingredients:</span>
           <ul>
-            {recipeDetails?.recipe?.ingredients.map((ingredient, index) => (
-              <li key={index}>
-                <span>
-                  {ingredient.quantity} {ingredient.unit}
-                </span>{" "}
-                - <span>{ingredient.description}</span>
-              </li>
+            {ingredients.map((item, index) => (
+              <li key={index}>{item}</li>
             ))}
           </ul>
+          <span>{recipeDetails.strInstructions}</span>
         </div>
       </div>
     </div>
