@@ -1,12 +1,36 @@
-# React + Vite
+# Food Recipe App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and interactive "Food Recipe Finder" built using "React", "React Context API", and "TheMealDB API"  
+Users can search for recipes, view detailed cooking instructions, and save their favorite dishes.
 
-Currently, two official plugins are available:
+# Features
+- Search recipes by name
+- View recipe details such as ingredients and instructions
+- Add and remove recipes from a favorites list
+- Global state management using React Context API
+- Page navigation using React Router
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# Tech Stack
+React -	Frontend UI
+React Router v6 -	Navigation between pages
+Context API -	Global state management
+TheMealDB API -	Recipe data
+---
+
+## 📦 Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/food-recipe-app.git
+
+# Navigate into project folder
+cd food-recipe-app
+
+# Install dependencies
+npm install
+
+# Start the server
+npm start
